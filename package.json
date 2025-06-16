@@ -1,0 +1,19 @@
+{
+  "name": "playwright-framework",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test tests/ui",
+    "test:api": "npx playwright test tests/api",
+    "test:headed": "npx playwright test --headed",
+    "report": "npx playwright show-report",
+    "clean": "rimraf output reports"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^20.0.0",
+    "allure-playwright": "^3.2.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.0.0"
+  }
+}

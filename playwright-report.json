@@ -1,0 +1,247 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\playwright.config.ts",
+    "rootDir": "C:/Users/laksh/OneDrive/Desktop/Playwright/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "output/html-report",
+          "open": "always"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "playwright-report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/laksh/OneDrive/Desktop/Playwright/output/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Chromium",
+        "name": "Chromium",
+        "testDir": "C:/Users/laksh/OneDrive/Desktop/Playwright/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/laksh/OneDrive/Desktop/Playwright/output/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Firefox",
+        "name": "Firefox",
+        "testDir": "C:/Users/laksh/OneDrive/Desktop/Playwright/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "3way",
+    "version": "1.53.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "uitests\\TC03alerts.spec.ts",
+      "file": "uitests/TC03alerts.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "DemoQA Alert Tests",
+          "file": "uitests/TC03alerts.spec.ts",
+          "line": 5,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Positive: Handle all alerts correctly",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Chromium",
+                  "projectName": "Chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6505,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-14T19:38:55.631Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--2e930-Handle-all-alerts-correctly-Chromium\\test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--2e930-Handle-all-alerts-correctly-Chromium\\video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--2e930-Handle-all-alerts-correctly-Chromium\\trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "6b7568d17204e21bf207-7e4da63ea9a9954de29c",
+              "file": "uitests/TC03alerts.spec.ts",
+              "line": 7,
+              "column": 7
+            },
+            {
+              "title": "Negative: Dismiss and cancel alert dialogs",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Chromium",
+                  "projectName": "Chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 6272,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"You clicked a button\"\u001b[39m\nReceived string:    \u001b[31m\"Do you confirm action?\"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"You clicked a button\"\u001b[39m\nReceived string:    \u001b[31m\"Do you confirm action?\"\u001b[39m\n    at Page.<anonymous> (C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts:40:32)",
+                        "location": {
+                          "file": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts",
+                          "column": 32,
+                          "line": 40
+                        },
+                        "snippet": "\u001b[90m   at \u001b[39m..\\pages\\AlertPages.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m   \u001b[36masync\u001b[39m triggerAndDismissSimpleAlert_Negative() {\n \u001b[90m 39 |\u001b[39m     \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39monce(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m dialog \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       expect(dialog\u001b[33m.\u001b[39mmessage())\u001b[33m.\u001b[39mtoContain(\u001b[32m'You clicked a button'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m       \u001b[36mawait\u001b[39m dialog\u001b[33m.\u001b[39mdismiss()\u001b[33m;\u001b[39m \u001b[90m// Not typical for alerts, just to simulate \"negative\" flow\u001b[39m\n \u001b[90m 42 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'#alertButton'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts",
+                            "column": 32,
+                            "line": 40
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"You clicked a button\"\u001b[39m\nReceived string:    \u001b[31m\"Do you confirm action?\"\u001b[39m\n\n\u001b[90m   at \u001b[39m..\\pages\\AlertPages.ts:40\n\n\u001b[0m \u001b[90m 38 |\u001b[39m   \u001b[36masync\u001b[39m triggerAndDismissSimpleAlert_Negative() {\n \u001b[90m 39 |\u001b[39m     \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39monce(\u001b[32m'dialog'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m dialog \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 |\u001b[39m       expect(dialog\u001b[33m.\u001b[39mmessage())\u001b[33m.\u001b[39mtoContain(\u001b[32m'You clicked a button'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 41 |\u001b[39m       \u001b[36mawait\u001b[39m dialog\u001b[33m.\u001b[39mdismiss()\u001b[33m;\u001b[39m \u001b[90m// Not typical for alerts, just to simulate \"negative\" flow\u001b[39m\n \u001b[90m 42 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 43 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'#alertButton'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at Page.<anonymous> (C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts:40:32)\u001b[22m"
+                        },
+                        {
+                          "location": {
+                            "file": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts",
+                            "column": 54,
+                            "line": 82
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator('#promptResult')\nExpected string: \u001b[32m\"You entered null\"\u001b[39m\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toHaveText\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#promptResult')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\AlertPages.ts:82\n\n\u001b[0m \u001b[90m 80 |\u001b[39m     })\u001b[33m;\u001b[39m\n \u001b[90m 81 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mclick(\u001b[32m'#promtButton'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 82 |\u001b[39m     \u001b[36mawait\u001b[39m expect(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mlocator(\u001b[32m'#promptResult'\u001b[39m))\u001b[33m.\u001b[39mtoHaveText(\u001b[32m'You entered null'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 83 |\u001b[39m   }\n \u001b[90m 84 |\u001b[39m }\n \u001b[90m 85 |\u001b[39m\u001b[0m\n\u001b[2m    at AlertsPage.triggerAndCancelPromptAlert (C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts:82:54)\u001b[22m\n\u001b[2m    at C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\tests\\uitests\\TC03alerts.spec.ts:31:5\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-14T19:39:02.648Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--e99a7-ss-and-cancel-alert-dialogs-Chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--e99a7-ss-and-cancel-alert-dialogs-Chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--e99a7-ss-and-cancel-alert-dialogs-Chromium\\error-context.md"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\output\\test-results\\uitests-TC03alerts-DemoQA--e99a7-ss-and-cancel-alert-dialogs-Chromium\\trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\laksh\\OneDrive\\Desktop\\Playwright\\pages\\AlertPages.ts",
+                        "column": 32,
+                        "line": 40
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "6b7568d17204e21bf207-ee15b7ee294b600d4735",
+              "file": "uitests/TC03alerts.spec.ts",
+              "line": 22,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-06-14T19:38:54.183Z",
+    "duration": 16292.829000000143,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}
