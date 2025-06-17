@@ -1586,3 +1586,6 @@ allure-results/e6bac129-29bf-465f-84bf-c2a464451b35-attachment.txt
 allure-results/ef649ca0-ad72-4436-9b6a-9c95074f93bc-attachment.png
 allure-results/f65f1633-9d23-4ae9-a7a8-5ca33ed46443-attachment.zip
 allure-results/f360bcc3-4e62-49ab-b6ed-0a33c22b5393-result.json
+.gradle/file-system.probe
+.gradle/
+allure/

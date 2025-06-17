@@ -1,0 +1,41 @@
+plugins {
+    id 'com.github.node-gradle.node' version '7.0.2'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+node {
+    version = '20.11.1'
+    npmVersion = '10.2.3'
+    download = true
+    workDir = file("${project.buildDir}/nodejs")
+    nodeProjectDir = file("${project.projectDir}")
+}
+
+// Helper function to register npm scripts as Gradle tasks
+def npmScript(taskName, npmScriptName = taskName) {
+    tasks.register(taskName, com.github.gradle.node.npm.task.NpmTask) {
+        group = 'Playwright'
+        args = ['run', npmScriptName]
+    }
+}
+
+// Register tasks based on your package.json scripts
+npmScript('test')
+npmScript('testUi', 'test:ui')
+npmScript('testApi', 'test:api')
+npmScript('testHeaded', 'test:headed')
+npmScript('report', 'report')
+npmScript('clean')  // rimraf clean-up
+npmScript('reportGenerate', 'report:generate')
+npmScript('reportOpen', 'report:open')
+npmScript('jsonServe', 'json:serve')
+npmScript('server', 'server')
+
+// Optional: Define a compound task that runs test → generate → open
+tasks.register('fullTestReport') {
+    group = 'Playwright'
+    description = 'Run tests and generate Allure report'
+    dependsOn 'test', 'reportGenerate', 'reportOpen'
+}
