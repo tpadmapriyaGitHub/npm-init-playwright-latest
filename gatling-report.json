@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "name": "All Requests",
+      "numberOfRequests": 100,
+      "numberOfRequestsOK": 100,
+      "numberOfRequestsKO": 0,
+      "minResponseTime": 109,
+      "maxResponseTime": 2021,
+      "meanResponseTime": 368,
+      "standardDeviation": 243,
+      "percentiles1": 327,
+      "percentiles2": 425,
+      "percentiles3": 627,
+      "percentiles4": 1311,
+      "requestsPerSecond": 33.33
+    },
+    {
+      "name": "Get Posts",
+      "numberOfRequests": 100,
+      "numberOfRequestsOK": 100,
+      "numberOfRequestsKO": 0,
+      "minResponseTime": 109,
+      "maxResponseTime": 2021,
+      "meanResponseTime": 368,
+      "standardDeviation": 243,
+      "percentiles1": 327,
+      "percentiles2": 425,
+      "percentiles3": 627,
+      "percentiles4": 1311,
+      "requestsPerSecond": 33.33
+    }
+  ]
+}

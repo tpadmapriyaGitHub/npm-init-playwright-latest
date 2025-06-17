@@ -1,9 +1,14 @@
 plugins {
     id 'com.github.node-gradle.node' version '7.0.2'
+    id 'io.gatling.gradle' version '3.9.5' // ✅ Use a known available version
 }
 
 group = 'com.example'
 version = '1.0.0'
+
+repositories {
+    mavenCentral() // ✅ Crucial for Gatling and Scala
+}
 
 node {
     version = '20.11.1'
@@ -13,7 +18,7 @@ node {
     nodeProjectDir = file("${project.projectDir}")
 }
 
-// Helper function to register npm scripts as Gradle tasks
+// ✅ Avoid conflict with built-in Gradle test task
 def npmScript(taskName, npmScriptName = taskName) {
     tasks.register(taskName, com.github.gradle.node.npm.task.NpmTask) {
         group = 'Playwright'
@@ -21,21 +26,99 @@ def npmScript(taskName, npmScriptName = taskName) {
     }
 }
 
-// Register tasks based on your package.json scripts
-npmScript('test')
+npmScript('playwrightTest', 'test')
 npmScript('testUi', 'test:ui')
 npmScript('testApi', 'test:api')
 npmScript('testHeaded', 'test:headed')
 npmScript('report', 'report')
-npmScript('clean')  // rimraf clean-up
+npmScript('cleanPlaywright', 'clean') // renamed to avoid conflict
 npmScript('reportGenerate', 'report:generate')
 npmScript('reportOpen', 'report:open')
 npmScript('jsonServe', 'json:serve')
 npmScript('server', 'server')
+npmScript('jsonServeGatling', 'json:serve:gatling')
 
-// Optional: Define a compound task that runs test → generate → open
 tasks.register('fullTestReport') {
     group = 'Playwright'
-    description = 'Run tests and generate Allure report'
-    dependsOn 'test', 'reportGenerate', 'reportOpen'
+    description = 'Run Playwright tests and generate Allure report'
+    dependsOn 'playwrightTest', 'reportGenerate', 'reportOpen'
+}
+
+tasks.register('fullDashboardReport') {
+    group = 'Playwright'
+    description = 'Run Playwright tests and serve data for Grafana'
+    dependsOn 'playwrightTest', 'reportGenerate', 'jsonServe'
+}
+
+tasks.register('fullTestPipeline') {
+    group = 'Verification'
+    description = 'Run Playwright, Gatling, and open Allure report'
+    dependsOn 'playwrightTest', 'gatlingRun', 'reportGenerate'
+    finalizedBy 'reportOpen'
+}
+tasks.named('gatlingRun') {
+    finalizedBy 'openGatlingReport'
+}
+import org.gradle.internal.os.OperatingSystem
+
+// Task to open the latest Gatling report
+tasks.register('openGatlingReport') {
+    group = "Gatling"
+    description = "Opens the latest Gatling HTML report"
+
+    doLast {
+        def reportsDir = file("$buildDir/reports/gatling")
+        if (!reportsDir.exists()) {
+            throw new GradleException("No Gatling reports found.")
+        }
+
+        def latestReport = reportsDir.listFiles()
+            .findAll { it.isDirectory() }
+            .sort { -it.lastModified() }
+            .first()
+
+        if (latestReport) {
+            def indexFile = new File(latestReport, "index.html")
+            if (!indexFile.exists()) {
+                throw new GradleException("index.html not found in ${latestReport}")
+            }
+
+            if (OperatingSystem.current().isWindows()) {
+                exec { commandLine 'cmd', '/c', 'start', '', indexFile.absolutePath }
+            } else if (OperatingSystem.current().isMacOsX()) {
+                exec { commandLine 'open', indexFile.absolutePath }
+            } else {
+                exec { commandLine 'xdg-open', indexFile.absolutePath }
+            }
+        } else {
+            throw new GradleException("No Gatling report directories found.")
+        }
+    }
+}
+// 🆕 Task: Copy stats.json as gatling-report.json
+tasks.register('copyGatlingJson') {
+    group = "Gatling"
+    description = "Copies stats.json from Gatling report to gatling-report.json for Grafana JSON server"
+
+    dependsOn 'gatlingRun' // Ensure Gatling runs first
+
+    doLast {
+        def reportsDir = file("$buildDir/reports/gatling")
+        if (!reportsDir.exists()) throw new GradleException("No Gatling reports found.")
+
+        def latestReport = reportsDir.listFiles()
+            .findAll { it.isDirectory() }
+            .sort { -it.lastModified() }
+            .first()
+
+        def sourceFile = new File(latestReport, "js/stats.json")
+        def targetFile = new File(projectDir, "gatling-report.json")
+
+        if (!sourceFile.exists()) {
+            throw new GradleException("stats.json not found in latest Gatling report.")
+        }
+
+        targetFile.text = sourceFile.text
+        println "Copied stats.json to gatling-report.json"
+    }
 }
